@@ -3,11 +3,11 @@
 ### Course Integrity
 **This course is compiled automatically on _`r Sys.Date()`_ **
 <br>
-[<img src="https://github.com/RockefellerUniversity/RU_reproducibleR/workflows/compilation-check/badge.svg">](https://github.com/RockefellerUniversity/RU_reproducibleR/actions?query=workflow%3compilation-check)
+[<img src="https://github.com/RockefellerUniversity/RU_reproducibleR_Abridged/workflows/compilation-check/badge.svg">](https://github.com/RockefellerUniversity/RU_reproducibleR_Abridged/actions?query=workflow%3compilation-check)
 
 **The course is tested and available on MacOS, Windows and Ubuntu Linux for `r R.Version()$version.string`**
 <br>
-[<img src="https://github.com/RockefellerUniversity/RU_reproducibleR/workflows/OS-check/badge.svg">](https://github.com/RockefellerUniversity/RU_reproducibleR/actions?query=workflow%3AOS-check)
+[<img src="https://github.com/RockefellerUniversity/RU_reproducibleR_Abridged/workflows/OS-check/badge.svg">](https://github.com/RockefellerUniversity/RU_reproducibleR_Abridged/actions?query=workflow%3AOS-check)
 
 <br>
 <br>
@@ -15,9 +15,9 @@
 ### Overview
 
 
-This course introduces how to code in R in a reproducible way. Two parallel methods are presented: Rmarkdown and Git. Together, Rmarkdown and Git allow you to generate analysis that is fully integrated with the results, session information is preserved and it is all version controlled so you can track changes as your analysis evolves.
+This course introduces how to code in R in a reproducible way. Several methods are presented: Rmarkdown, metadata and Git. Together, Rmarkdown, metadata and Git allow you to generate analysis that is fully integrated with the results, session information is preserved and it is all version controlled so you can track changes as your analysis evolves.
 
 Course material is available as HTML presentations or single page document. An exercise is available at the end.
 
-Course material and exercises are available to view as rendered HTML at https://rockefelleruniversity.github.io/RU_reproducibleR/.
+Course material and exercises are available to view as rendered HTML at https://rockefelleruniversity.github.io/RU_reproducibleR_Abridged/.
 All material is available to download under GPL v2 license.

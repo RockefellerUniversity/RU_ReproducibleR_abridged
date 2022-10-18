@@ -1,0 +1,20 @@
+---
+title: "Metadata"
+author: "Rockefeller University, Bioinformatics Resource Center"
+date: "https://rockefelleruniversity.github.io/RU_reproducibleR_Abridged/"
+output: 
+  html_document:
+    number_sections: false  ## if you want number sections at each table header
+    theme: united  # many options for theme, this one is my favorite.
+    highlight: tango  # specifies the syntax highlighting style
+params:
+  toMessage: false    
+---
+
+```{r, setup,include=FALSE}
+toMessage <- ifelse(!is.null(params$toMessage),params$toMessage,FALSE)
+message(toMessage)
+```
+
+There are no exercises for this section
+

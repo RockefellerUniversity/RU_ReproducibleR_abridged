@@ -2,7 +2,7 @@ Description:
   CourseName: Reproducible R
   OverviewRmd: CourseOverview.Rmd
 Presentations:
-  titles: Session1 Session2
-  PresRmd: reproducibleR.Rmd github.Rmd
+  titles: Session1 Session2 Session3
+  PresRmd: reproducibleR.Rmd Meta_Data_RUCCTS_BRC.Rmd github.Rmd
   PresOverviewRmd: ReproducibleR_Session1Overview.Rmd ReproducibleR_Session2Overview.Rmd
-  Exercises: ReproducibleR.Rmd GitandGitHub.Rmd
+  Exercises: ReproducibleR.Rmd Metadata.Rmd GitandGitHub.Rmd

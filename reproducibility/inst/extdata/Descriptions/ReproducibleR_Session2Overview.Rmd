@@ -1,11 +1,9 @@
 <br>
 
-####  **Git and GitHub**
+####  **Metadata**
 
-In Git and GitHub we will review the widely used version control and web hosting systems.
+There are several systems and tools to help keep track of bioinformatic metadata
 
 Session sections:
 
-* What is Git and GitHub?
-* Working locally and remotely to version control projects
-* Typical project work flows
+* How to work with metadata

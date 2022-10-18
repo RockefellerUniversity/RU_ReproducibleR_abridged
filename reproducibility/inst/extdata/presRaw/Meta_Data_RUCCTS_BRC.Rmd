@@ -1,0 +1,97 @@
+---
+title: "MetaData in Bioinformtics Research"
+author: "Rockefeller University, BRC and RUCCTS Bioinformtics"
+date: "https://rockefelleruniversity.github.io/RU_reproducibleR/"
+output: 
+  html_document:
+  toc: true
+  toc_float: yes
+  depth: 3
+  number_of_section: false
+  theme: united # many option for themes
+  highlight: tango # specifies the syntax highlight style
+  params:
+  toMessage: false
+  
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# <font size="4">**Accessing information from a public database: GEO**</font>
+<font size="4"> Minimum Information About a Microarray Experiment (MIAME) is a set of guidelines developed by the Microarray Gene Expression Data (MGED). It been adopted by many journals to support an independent evaluation of results. Gene Expression Omnibus (GEO) database at the National Center for Biotechnology Information and European Bioinformatics Institute (EBI) ArrayExpress follow same standard. \
+
+<font size="4">  Among the several R packages that can be used to access its data, GEOquery is a simple and widely accepted package. \
+To install
+
+
+```{r eval=FALSE}
+if (!require("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+    BiocManager::install("GEOquery", force =TRUE)
+
+```
+
+
+
+
+
+
+
+# <font size="4">**Creating metadata using template: CEDAR Workbench**</font>
+
+<font size="4"> It is an online resource that makes it easy to collect and use metadata \
+
+<font size="4">**It helps user to**</font> \
+<font size="4">create user-friendly, shareable forms for collecting metadata, with features like </font> \
+
+  * <font size="4">share your forms and metadata </font> \
+
+  * <font size="4">link your questions (fields) and possible answers (values) to controlled terms </font> \
+
+  * <font size="4"> view metadata responses meeting your search critieria, in several forms </font> \
+
+  * <font size="4">use the Workbench Desktop interface to manage your content </font>\
+
+  * <font size="4">enable intelligent metadata suggestions in your template by using a field’s Suggestions tab </font> \
+
+
+**Webpage**: [**cedar.metadatacenter.org**](https://cedar.metadatacenter.org) \
+
+Click on the “Register” link to
+
+ * Create an account \
+
+ 
+```{r,eval=TRUE, echo=FALSE}
+knitr::include_graphics("/Users/mkandpal/metadata/images/cedar_signin.png")
+```
+
+Once registered, 
+
+ * Click on the Shared with Me link on the left side to find sample template \
+ * Try creating your own \
+
+```{r,eval=TRUE, echo=FALSE} 
+knitr::include_graphics("/Users/mkandpal/metadata/images/cedar_webpage.png")
+
+```
+
+# <font size="4">**cedarr: Accessing CEDAR using R**</font> \
+
+For installation:\
+```{r message=FALSE}
+devtools::install_github("earnaud/cedarr", dependencies = TRUE)
+```
+  
+For help: \
+```{r message=FALSE}
+
+help("API response", package = "cedarr")
+# ?cedarr::`API response`
+```
+
+
+
