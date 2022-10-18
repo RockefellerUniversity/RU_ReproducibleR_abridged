@@ -298,10 +298,10 @@ ls -a .
   
 .pull-right[
 *Windows*
-```{sh, eval=windows}
+```{sh, eval=F}
 dir .
 ```
-```{sh, eval=windows}
+```{sh, eval=F}
 dir . /ah
 ```
   ] 
