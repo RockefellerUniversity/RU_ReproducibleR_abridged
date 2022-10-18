@@ -31,7 +31,7 @@ knitr::opts_chunk$set(echo = TRUE, tidy = T)
 
 
 
-```{r, echo=F, message=F}
+```{r, echo=F, message=F, eval=F}
 windows <- if(.Platform$OS.type!="unix"){windows<-(TRUE)}else{windows<-(FALSE)}
 message(windows)
 unix <- if(.Platform$OS.type=="unix"){unix<-(TRUE)}else{unix<-(FALSE)}
@@ -288,10 +288,10 @@ git init
 
 .pull-left[
 *Mac/Linux*
-```{sh, eval=unix}
+```{sh}
 ls .
 ```
-```{sh, eval=unix}
+```{sh}
 ls -a .
 ```
   ]
