@@ -200,7 +200,7 @@ https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 
 We initialize repositories to store files related to a project. You can make many repositories and they are just a regular folder with some extra properties created by git. 
 
-```{r, echo=F, message=F, warning=F, include=F}
+```{r, echo=F, message=F, warning=F, include=F,eval=F} 
 require(gh)
 
 # get both pats
@@ -236,7 +236,7 @@ gh("POST /user/repos", name = "My_GitHub_Project")
 }
 ```
 
-```{sh, eval=T, echo=F}
+```{sh, eval=F, echo=F}
 rm -rf .git
 rm -rf README.md
 git init
@@ -503,7 +503,7 @@ Add the address to the Git. If you do not want it online on GitHub you can pick 
 git remote add origin https://github.com/BRC-RU/My_GitHub_Project.git
 ```
 
-```{r, echo=F}
+```{r, echo=F,eval=F} 
 
 if(OS_check){
 system(paste0("git remote add origin https://github.com/BRC-RU/", repo_name, ".git"))
@@ -521,7 +521,7 @@ system("git remote add origin https://github.com/BRC-RU/My_GitHub_Project.git")
 git push -u origin master
 ```
 
-```{r, echo=F }
+```{r, echo=F ,eval=F} 
 if(OS_check){
 system(paste0("git push https://${GH_alt}@github.com/BRC-RU/", repo_name, ".git"))
 }else{system("git push https://${GH_alt}@github.com/BRC-RU/My_GitHub_Project.git")}
@@ -559,7 +559,7 @@ Whenever your local Git is behind the remote GitHub, you can grab the updates wi
 git pull -u origin master
 ```
 
-```{r, echo=F}
+```{r, echo=F,eval=F} 
 if(OS_check){
 system(paste0("git pull https://${GH_alt}@github.com/BRC-RU/", repo_name, ".git"))
 }else{
