@@ -1,19 +1,33 @@
 ---
-title: "MetaData in Bioinformtics Research"
-author: "Rockefeller University, BRC and RUCCTS Bioinformtics"
-date: "https://rockefelleruniversity.github.io/RU_reproducibleR/"
+title: "MetaData in Bioinformtics Research <html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>"
+author: "Rockefeller University, BRC and RUCCTS Bioinformatics"
+date: "https://rockefelleruniversity.github.io/RU_reproducibleR_Abridged/"
 output: 
+  xaringan::moon_reader:
+    css: ["default", "metropolisCustom.css", "metropolis-fontsCustom.css"]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
   html_document:
-  toc: true
-  toc_float: yes
-  depth: 3
-  number_of_section: false
-  theme: united # many option for themes
-  highlight: tango # specifies the syntax highlight style
-  params:
-  toMessage: false
-  
+    toc: true # table of contents true
+    toc_float: yes
+    depth: 3  # upto three depths of headings (specified by #, ## and ###)
+    number_sections: false  ## if you want number sections at each table header
+    theme: united  # many options for theme, this one is my favorite.
+    highlight: tango  # specifies the syntax highlighting style
+params:
+  isSlides: "no"
 ---
+
+```{r setup, include=FALSE}
+suppressPackageStartupMessages(require(knitr))
+knitr::opts_chunk$set(echo = TRUE, tidy = T)
+#knitr::opts_knit$set(root.dir = '../My_Project_Folder')
+
+
+```
 
 
 ```{r setup, include=FALSE}
@@ -66,7 +80,7 @@ Click on the “Register” link to
 
  
 ```{r,eval=TRUE, echo=FALSE}
-knitr::include_graphics("/Users/mkandpal/metadata/images/cedar_signin.png")
+knitr::include_graphics("imgs/cedar_signin.png")
 ```
 
 Once registered, 
@@ -75,7 +89,7 @@ Once registered,
  * Try creating your own \
 
 ```{r,eval=TRUE, echo=FALSE} 
-knitr::include_graphics("/Users/mkandpal/metadata/images/cedar_webpage.png")
+knitr::include_graphics("imgs/cedar_webpage.png")
 
 ```
 
