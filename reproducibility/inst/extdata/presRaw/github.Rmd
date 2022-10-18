@@ -316,14 +316,14 @@ You can explore it. It is full of simple plain text files.
 
 .pull-left[
 *Mac/Linux*
-```{sh, eval=unix}
+```{sh}
 ls -a .git
 ```
   ]
   
 .pull-right[
 *Windows*
-```{sh, eval=windows}
+```{sh, eval=F}
 dir /ah .git
 ```
   ]
