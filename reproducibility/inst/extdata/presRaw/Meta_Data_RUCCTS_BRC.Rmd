@@ -30,10 +30,6 @@ knitr::opts_chunk$set(echo = TRUE, tidy = T)
 ```
 
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
 # <font size="4">**Accessing information from a public database: GEO**</font>
 <font size="4"> Minimum Information About a Microarray Experiment (MIAME) is a set of guidelines developed by the Microarray Gene Expression Data (MGED). It been adopted by many journals to support an independent evaluation of results. Gene Expression Omnibus (GEO) database at the National Center for Biotechnology Information and European Bioinformatics Institute (EBI) ArrayExpress follow same standard. \
 
