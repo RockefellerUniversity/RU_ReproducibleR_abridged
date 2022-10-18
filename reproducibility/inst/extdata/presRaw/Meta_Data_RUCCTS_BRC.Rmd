@@ -76,8 +76,9 @@ Click on the “Register” link to
 
  
 ```{r,eval=TRUE, echo=FALSE}
-knitr::include_graphics("imgs/cedar_signin.png")
+knitr::include_graphics("imgs/cedar_signIn.png")
 ```
+
 
 Once registered, 
 
