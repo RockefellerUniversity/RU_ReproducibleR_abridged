@@ -1027,7 +1027,7 @@ git config credential.username ${C}
 
 ```
 
-```{r, echo=F, message=F, warning=F, include=F}
+```{r, echo=F, message=F, warning=F, include=F, eval=F}
 Sys.setenv(GITHUB_PAT=master_PAT)
 Sys.setenv(GITHUB_TOKEN=master_PAT)
 ```
