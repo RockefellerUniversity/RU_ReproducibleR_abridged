@@ -149,7 +149,12 @@ if(params$isSlides == "yes"){
 ```
 
 ## The problem
-As you collect code for a project, you are always making updates. What version did you use when? How do organize all of these? How do I stay in lockstep with my collaborators? How do I efficiently share code with collaborators?
+As you collect code for a project, you are always making updates. 
+
+* What version did you use when? 
+* How do organize all of these? 
+* How do I stay in lockstep with my collaborators? 
+* How do I efficiently share code with collaborators?
 
 ---
 ## What is Git?
@@ -433,29 +438,16 @@ git commit -m 'Added welcome message'
 ```
 
 ---
-## What've we done? - git log (pt1)
+## What've we done? - git log
 * Log gives a list of commits in chronological order.
 * There is a hexadecimal code that is unique ID for each commit. 
 * Other information i.e. Time and Author
+
+There are many arguments to modify this i.e. --oneline = Just commit message
 ```{sh}
 
 git log
 
-```
-
----
-## What've we done? - git log (pt2)
-Can modify the log response to specific information that you need. This is important if you want to comb through 100s of commits. 
-
-* --oneline = Just commit message
-* --stat = What files change
-* --patch = What content changes
-
-```{sh}
-git log --oneline
-```
-```{sh}
-git log --oneline --stat
 ```
 
 ---

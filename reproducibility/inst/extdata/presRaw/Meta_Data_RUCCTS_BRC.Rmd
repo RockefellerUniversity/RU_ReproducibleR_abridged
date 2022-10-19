@@ -184,7 +184,7 @@ GEOquery::Columns(gds)
 Table() returns a data.frame of gene expression data. The columns include gene IDs and expression values by Sample.
 
 ```{r}
-GEOquery::Table(gds) 
+GEOquery::Table(gds)[1:5,]
 ```
 
 
