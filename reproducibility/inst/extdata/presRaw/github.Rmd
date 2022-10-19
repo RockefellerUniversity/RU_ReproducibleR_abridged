@@ -53,9 +53,10 @@ if(params$isSlides != "yes"){
 
 ## Overview
 
-- [Set up](https://rockefelleruniversity.github.io/RU_introtoR_abridged/presentations/singlepage/introToR_Session1.html#set-up)
-- [Background to R](https://rockefelleruniversity.github.io/RU_introtoR_abridged/presentations/singlepage/introToR_Session1.html#background-to-r)
-- [Data types in R](https://rockefelleruniversity.github.io/RU_introtoR_abridged/presentations/singlepage/introToR_Session1.html#data_types_in_r)
+- [Set up](https://rockefelleruniversity.github.io/RU_ReproducibleR_abridged/presentations/singlepage/github.html#Set_Up)
+- [Git](https://rockefelleruniversity.github.io/RU_ReproducibleR_abridged/presentations/singlepage/github.html#What_is_Git)
+- [GitHub](https://rockefelleruniversity.github.io/RU_ReproducibleR_abridged/presentations/singlepage/github.html#Connecting_Git_to_GitHub)
+- [GitHub workflow](https://rockefelleruniversity.github.io/RU_ReproducibleR_abridged/presentations/singlepage/github.html#Project_workflow_and_collaboration_using_GitHub)
 
 
 ---
@@ -982,7 +983,7 @@ Exercise on Git and GitHub in R can be found [here](../../exercises/exercises/Gi
 ---
 ## Contact
 
-Any suggestions, comments, edits or questions (about content or the slides themselves) please reach out to our [GitHub](https://github.com/RockefellerUniversity/Reproducible_R/issues) and raise an issue.
+Any suggestions, comments, edits or questions (about content or the slides themselves) please reach out to our [GitHub](https://github.com/RockefellerUniversity/Reproducible_R_Abridged/issues) and raise an issue.
 
 
 ---
