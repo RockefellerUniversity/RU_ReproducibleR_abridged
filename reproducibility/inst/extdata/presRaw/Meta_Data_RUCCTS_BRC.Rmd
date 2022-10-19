@@ -1,5 +1,5 @@
 ---
-title: "MetaData in Bioinformtics Research <html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>"
+title: "MetaData in Bioinformatics Research <html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>"
 author: "Rockefeller University, BRC and RUCCTS Bioinformatics"
 date: "https://rockefelleruniversity.github.io/RU_reproducibleR_Abridged/"
 output: 
@@ -29,25 +29,299 @@ knitr::opts_chunk$set(echo = TRUE, tidy = T)
 
 ```
 
+```{r, results='asis',include=TRUE,echo=FALSE}
+if(params$isSlides != "yes"){
+  cat("# MetaData in Bioinformatics Research
 
-# <font size="4">**Accessing information from a public database: GEO**</font>
-<font size="4"> Minimum Information About a Microarray Experiment (MIAME) is a set of guidelines developed by the Microarray Gene Expression Data (MGED). It been adopted by many journals to support an independent evaluation of results. Gene Expression Omnibus (GEO) database at the National Center for Biotechnology Information and European Bioinformatics Institute (EBI) ArrayExpress follow same standard. \
+---
+"    
+  )
+  
+}
 
-<font size="4">  Among the several R packages that can be used to access its data, GEOquery is a simple and widely accepted package. \
-To install
+```
+
+
+---
+```{r, results='asis',include=TRUE,echo=FALSE}
+if(params$isSlides == "yes"){
+  cat("class: inverse, center, middle
+
+# Accessing (Meta)Data from Gene Expression Omnibus (GEO) using R
+
+<html><div style='float:left'></div><hr color='#EB811B' size=1px width=720px></html> 
+
+---
+"    
+  )
+}else{
+  cat("# Accessing (Meta)Data from Gene Expression Omnibus (GEO) using R
+
+---
+"    
+  )
+  
+}
+
+```
+
+## GEOquery
+
+<font size="4"> GEO database at the National Center for Biotechnology Information and European Bioinformatics Institute (EBI) ArrayExpress follow the MIAME format for data storage. Minimum Information About a Microarray Experiment (MIAME) is a set of guidelines developed by the Microarray Gene Expression Data (MGED). It been adopted by many journals to support an independent evaluation of results. \
+
+<font size="4">  Among the several R packages that can be used to access its data, GEOquery is a simple and widely used one. \
+To start, we will need 
+
 
 
 ```{r eval=FALSE}
 if (!require("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
     BiocManager::install("GEOquery", force =TRUE)
+    
+```
+
+```{r}
+library(GEOquery)
+library(tidyverse)
+library(pryr)
+
+```
+
+## Data from GEO is access by a GEO Accession ID
+
+### Datasets: GDS[0-9] : 
+
+* Curated set of GEO sample data \
+ * Samples in a given GDS share the same Platform \
+ * Methodology is assumed to be consistent \
+
+### Sample: GSM[0-9]
+* Records information about a
+  * Single Sample
+  * Cell line / tissue
+  * References a single Platform
+  * May be in multiple Series
+
+---
+## Data from GEO is access by a GEO Accession ID
+
+### Platform | GPL[0-9]
+* Provides a summary description of the experimental Platform. i.e. Microarray, Sequencer
+* ID is not limited to a single sample or submitter
+
+### Series: GSE[0-9]
+* Similar to datasets, it defines a set of related Samples
+* Can have data from multiple platform
+* Available in two formats:
+    * ExpressionSet and Biobase object
+* Often, multiple series are combined to create a Superseries.
+
+---
+## getGEO
+
+The main user-level function in the GEOquery package is "getGEO"
+
+
+```{r, eval=T}
+
+args(getGEO)  
+
+```
+
+To download the data to a specific folder, we will need to create one. We could also provide an exisiting location.
+
+
+```{r, eval=FALSE}
+# To store the data to specified folder, we need the the Dataset,
+dir.create("GeoData")
+```
+
+---
+## Downloading a GDS object
+
+We will access the data submitted in the following [article](https://pubmed.ncbi.nlm.nih.gov/24531327/), \
+<font size="3">  _"Recurrent somatic mutations of PTPN1 in primary mediastinal B cell lymphoma and Hodgkin lymphoma". Nat Genet 2014 Apr;46(4):329-35_  </font> \
+
+
+```{r eval=T}
+gds <- GEOquery::getGEO(GEO = "GDS5288", destdir = "GeoData")
+```
+
+---
+## Accesor functions
+
+Meta() returns a list of object metadata
+
+```{R}
+GEOquery::Meta(gds)[c("title", "description", "ref",
+                      "platform", "platform_technology_type",
+                      "sample_organism", "sample_id", "sample_type")]
+```
+
+---
+## Accesor functions
+
+Columns() returns a data.frame of column descriptors. This includes information about each of the samples in the data.
+```{r}
+GEOquery::Columns(gds) 
+```
+
+
+---
+## Accesor functions
+
+Table() returns a data.frame of gene expression data. The columns include gene IDs and expression values by Sample.
+
+```{r}
+GEOquery::Table(gds) 
+```
+
+
+---
+## The GDS object
+
+```{r}
+pryr::object_size(gds)
+class(gds)
+isS4(gds) 
+
+```
+
+---
+## GSM - Sample
+
+There are similar workflows for Sample, Series and Platform. 
+
+```{r}
+gsm <- getGEO("GSM1308977", destdir = "GeoData")
+Meta(gsm)
+```
+
+---
+## GSM - Sample
+
+Similar accessor functions work
+```{r}
+Columns(gsm)
+Table(gsm) 
+```
+
+---
+## GSM - Sample
+
+```{r}
+
+pryr::object_size(gsm)
+class(gsm)
+isS4(gsm) 
+```
+
+---
+## GPL - Platform
+
+Here is obtaining GPL metadata.
+```{R}
+gpl <- getGEO("GPL570", destdir = "GeoData")
+pryr::object_size(gpl)
+class(gpl)
+```
+
+---
+## GPL - Platform
+
+```{r}
+Meta(gpl) %>% str(vec.len = 1, nchar.max = 65)
+```
+
+---
+## GPL - Platform
+```{r}
+Columns(gpl) %>% as_tibble()
+```
+
+---
+## GPL - Platform
+
+```{r}
+Table(gpl) %>% dim()
+Table(gpl) %>% as_tibble() %>%
+  dplyr::select(ID, GB_ACC, `Sequence Source`, `Target Description`)
 
 ```
 
 
+---
+## GSE - Series
 
 
+```{r, eval=F}
+gse <- getGEO(GEO = "GSE54157", destdir = "GeoData",
+              GSEMatrix = FALSE) # Note the GSEMatrix argument
+gseEx <- getGEO(GEO = "GSE54157", destdir = "GeoData",
+              GSEMatrix = TRUE) # Note the GSEMatrix argument
+```
+```{r, echo=F, eval=T}
+gse <- getGEO(GEO = "GSE54157", destdir = "GeoData",
+              GSEMatrix = FALSE) # Note the GSEMatrix argument
+gse_exprs <- getGEO(GEO = "GSE54157", destdir = "GeoData",
+              GSEMatrix = TRUE) # Note the GSEMatrix argument
+```
 
+---
+## GSE - Series
+
+```{r}
+class(gse)
+Meta(gse)[c("title", "type", "platform_id", "summary",
+            "supplementary_file")]
+
+```
+
+
+---
+## GSE - Series
+
+We can extract out the GSM and GPL in the series. 
+```{R}
+GEOquery::GSMList(gse) %>% names()
+GEOquery::GPLList(gse) %>% names()
+```
+
+---
+## GSE - Series
+
+
+```{r, eval=F}
+gse_exprs <- getGEO(GEO = "GSE54157", destdir = "geoData",
+                    GSEMatrix = TRUE) # Note the GSEMatrix argument
+```
+
+---
+## GSE - Series
+
+```{r}
+class(gse_exprs)
+length(gse_exprs)
+pryr::object_size(gse_exprs)
+lapply(gse_exprs, class)
+```
+
+---
+## GSE - Series
+
+```{r}
+# Extract phenotype data from the ExpressionSet
+Biobase::pData(gse_GPL570) %>% as_tibble()
+
+
+```
+
+```{r}
+supp_info <- GEOquery::getGEOSuppFiles(GEO = "GSE147507")
+rownames(supp_info)
+# In this case, the GEO series does not have pre-processed expression data..
+# Instead, raw data can be accessed from the supplemental file links
 
 
 # <font size="4">**Creating metadata using template: CEDAR Workbench**</font>
