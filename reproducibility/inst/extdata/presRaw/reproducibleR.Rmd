@@ -370,7 +370,7 @@ __Bold__
 ---
 ## Including images
 
-Figures or external images can be used in markdown documents.  
+Figures or external images can be used in Markdown documents.  
 Files may be local or accessible from http URL.
 
 ````verbatim
@@ -381,8 +381,8 @@ Files may be local or accessible from http URL.
 ---
 ## HTML links
 
-HTML links can be included in Markdown documents either by simply including address in text or by using **[]** for the phrase to add link to, followed the link in **()**
-```
+HTML links can also be included with similar nomenclature by including address in text or by using **[]** for the phrase to add link to, followed the link in **()**
+
 https://rockefelleruniversity.github.io/
 [Github site](https://rockefelleruniversity.github.io/)
 
