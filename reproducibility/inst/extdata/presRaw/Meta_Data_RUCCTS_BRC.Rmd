@@ -144,9 +144,19 @@ We will access the data submitted in the following [article](https://pubmed.ncbi
 <font size="3">  _"Recurrent somatic mutations of PTPN1 in primary mediastinal B cell lymphoma and Hodgkin lymphoma". Nat Genet 2014 Apr;46(4):329-35_  </font> \
 
 
-```{r eval=T}
+```{r eval=F}
 gds <- GEOquery::getGEO(GEO = "GDS5288", destdir = "GeoData")
+
 ```
+
+```{R, echo=F, eval=F}
+save(gds, file = "../data/gds.RData")
+```
+
+```{R, echo=F, eval=T}
+load("data/gds.RData")
+```
+
 
 ---
 ## Accesor functions
@@ -193,10 +203,23 @@ isS4(gds)
 
 There are similar workflows for Sample, Series and Platform. 
 
-```{r}
+```{r, eval=F}
 gsm <- getGEO("GSM1308977", destdir = "GeoData")
+```
+
+```{R, echo=F, eval=F}
+save(gsm, file = "../data/gsm.RData")
+```
+
+```{R, echo=F, eval=T}
+load("data/gsm.RData")
+```
+
+```{r}
 Meta(gsm)
 ```
+
+
 
 ---
 ## GSM - Sample
@@ -221,8 +244,19 @@ isS4(gsm)
 ## GPL - Platform
 
 Here is obtaining GPL metadata.
-```{R}
+```{R, eval=F}
 gpl <- getGEO("GPL570", destdir = "GeoData")
+```
+
+```{R, echo=F, eval=F}
+save(gpl, file = "../data/gpl.RData")
+```
+
+```{R, echo=F, eval=T}
+load("data/gpl.RData")
+```
+
+```{r}
 pryr::object_size(gpl)
 class(gpl)
 ```
@@ -258,14 +292,18 @@ Table(gpl) %>% as_tibble() %>%
 ```{r, eval=F}
 gse <- getGEO(GEO = "GSE54157", destdir = "GeoData",
               GSEMatrix = FALSE) # Note the GSEMatrix argument
-gseEx <- getGEO(GEO = "GSE54157", destdir = "GeoData",
-              GSEMatrix = TRUE) # Note the GSEMatrix argument
-```
-```{r, echo=F, eval=T}
-gse <- getGEO(GEO = "GSE54157", destdir = "GeoData",
-              GSEMatrix = FALSE) # Note the GSEMatrix argument
 gse_exprs <- getGEO(GEO = "GSE54157", destdir = "GeoData",
               GSEMatrix = TRUE) # Note the GSEMatrix argument
+```
+
+```{R, echo=F, eval=F}
+save(gse, file = "../data/gse.RData")
+save(gse_exprs, file = "../data/gse_exprs.RData")
+```
+
+```{R, echo=F, eval=T}
+load("data/gse.RData")
+load("data/gse_exprs.RData")
 ```
 
 ---
@@ -310,21 +348,50 @@ lapply(gse_exprs, class)
 ---
 ## GSE - Series
 
-```{r}
-# Extract phenotype data from the ExpressionSet
+Phenotype data can be extracted from the ExpressionSet
+
+```{r, eval=F}
+gse_GPL570 <- gse_exprs[[1]]
 Biobase::pData(gse_GPL570) %>% as_tibble()
 
-
 ```
+
+---
+## GSE - Series 
+
+In this case, the GEO series does not have pre-processed expression data. Instead, raw data can be accessed from the supplemental file links
 
 ```{r}
 supp_info <- GEOquery::getGEOSuppFiles(GEO = "GSE147507")
 rownames(supp_info)
-# In this case, the GEO series does not have pre-processed expression data..
-# Instead, raw data can be accessed from the supplemental file links
 
+```
 
-# <font size="4">**Creating metadata using template: CEDAR Workbench**</font>
+---
+```{r, results='asis',include=TRUE,echo=FALSE}
+if(params$isSlides == "yes"){
+  cat("class: inverse, center, middle
+
+# Creating metadata using template: CEDAR Workbench
+
+<html><div style='float:left'></div><hr color='#EB811B' size=1px width=720px></html> 
+
+---
+"    
+  )
+}else{
+  cat("# Creating metadata using template: CEDAR Workbench
+
+---
+"    
+  )
+  
+}
+
+```
+
+## CEDAR Workbench
+
 
 <font size="4"> It is an online resource that makes it easy to collect and use metadata \
 
@@ -341,6 +408,8 @@ rownames(supp_info)
 
   * <font size="4">enable intelligent metadata suggestions in your template by using a field’s Suggestions tab </font> \
 
+---  
+## Create a CEDAR account
 
 **Webpage**: [**cedar.metadatacenter.org**](https://cedar.metadatacenter.org) \
 
@@ -353,6 +422,8 @@ Click on the “Register” link to
 knitr::include_graphics("imgs/cedar_signIn.png")
 ```
 
+---  
+## CEDAR template
 
 Once registered, 
 
@@ -364,7 +435,8 @@ knitr::include_graphics("imgs/cedar_webpage.png")
 
 ```
 
-# <font size="4">**cedarr: Accessing CEDAR using R**</font> \
+---  
+## CEDAR and R
 
 For installation:\
 ```{r message=FALSE}
@@ -378,5 +450,9 @@ help("API response", package = "cedarr")
 # ?cedarr::`API response`
 ```
 
+---
+## Contact
+
+Any suggestions, comments, edits or questions (about content or the slides themselves) please reach out to our [GitHub](https://github.com/RockefellerUniversity/Reproducible_R_Abridged/issues) and raise an issue.
 
 
