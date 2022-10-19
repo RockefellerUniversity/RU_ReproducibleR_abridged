@@ -50,7 +50,7 @@ if(params$isSlides == "yes"){
 ## 
 
 
-## -----------------------------------------------------------------------------
+## ---- warnings=F, message=F---------------------------------------------------
 library(GEOquery)
 library(tidyverse)
 library(pryr)
@@ -212,6 +212,8 @@ lapply(gse_exprs, class)
 ## -----------------------------------------------------------------------------
 supp_info <- GEOquery::getGEOSuppFiles(GEO = "GSE147507")
 rownames(supp_info)
+basename(rownames(supp_info)[1])
+basename(rownames(supp_info)[2])
 
 
 
