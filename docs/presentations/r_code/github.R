@@ -227,11 +227,6 @@ if(params$isSlides == "yes"){
 ## 
 
 
-## git log --oneline
-
-## git log --oneline --stat
-
-
 ## ---- results='asis',include=TRUE,echo=FALSE----------------------------------
 if(params$isSlides == "yes"){
   cat("class: inverse, center, middle

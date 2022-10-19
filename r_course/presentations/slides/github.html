@@ -111,7 +111,12 @@ class: inverse, center, middle
 ---
 
 ## The problem
-As you collect code for a project, you are always making updates. What version did you use when? How do organize all of these? How do I stay in lockstep with my collaborators? How do I efficiently share code with collaborators?
+As you collect code for a project, you are always making updates. 
+
+* What version did you use when? 
+* How do organize all of these? 
+* How do I stay in lockstep with my collaborators? 
+* How do I efficiently share code with collaborators?
 
 ---
 ## What is Git?
@@ -412,7 +417,7 @@ git status .
 ```
 
 ```
-## [master (root-commit) dfedec8] Made a README
+## [master (root-commit) e5d01b7] Made a README
 ##  1 file changed, 0 insertions(+), 0 deletions(-)
 ##  create mode 100644 README.md
 ## On branch master
@@ -514,15 +519,17 @@ git commit -m 'Added welcome message'
 ## +++ b/README.md
 ## @@ -0,0 +1 @@
 ## +Hello Friends
-## [master 45d67b8] Added welcome message
+## [master 94ef298] Added welcome message
 ##  1 file changed, 1 insertion(+)
 ```
 
 ---
-## What've we done? - git log (pt1)
+## What've we done? - git log
 * Log gives a list of commits in chronological order.
 * There is a hexadecimal code that is unique ID for each commit. 
 * Other information i.e. Time and Author
+
+There are many arguments to modify this i.e. --oneline = Just commit message
 
 ```sh
 
@@ -531,48 +538,17 @@ git log
 ```
 
 ```
-## commit 45d67b8f763877da56671e6408bee2a7d935faea
+## commit 94ef2984fe878ffde549daa840bc96fc4136e985
 ## Author: BRC-RU &lt;brc@rockefeller.edu&gt;
-## Date:   Wed Oct 19 16:05:25 2022 +0000
+## Date:   Wed Oct 19 16:16:45 2022 +0000
 ## 
 ##     Added welcome message
 ## 
-## commit dfedec86decc7195201d8f5bf2050b877e239d9a
+## commit e5d01b79e841d60470bf5114018b54d4526c02a5
 ## Author: BRC-RU &lt;brc@rockefeller.edu&gt;
-## Date:   Wed Oct 19 16:05:25 2022 +0000
+## Date:   Wed Oct 19 16:16:45 2022 +0000
 ## 
 ##     Made a README
-```
-
----
-## What've we done? - git log (pt2)
-Can modify the log response to specific information that you need. This is important if you want to comb through 100s of commits. 
-
-* --oneline = Just commit message
-* --stat = What files change
-* --patch = What content changes
-
-
-```sh
-git log --oneline
-```
-
-```
-## 45d67b8 Added welcome message
-## dfedec8 Made a README
-```
-
-```sh
-git log --oneline --stat
-```
-
-```
-## 45d67b8 Added welcome message
-##  README.md | 1 +
-##  1 file changed, 1 insertion(+)
-## dfedec8 Made a README
-##  README.md | 0
-##  1 file changed, 0 insertions(+), 0 deletions(-)
 ```
 
 ---
