@@ -37,7 +37,6 @@ class: center, middle, inverse, title-slide
 
 
 
----
 class: inverse, center, middle
 
 # Accessing (Meta)Data from Gene Expression Omnibus (GEO) using R
@@ -64,72 +63,11 @@ BiocManager::install("GEOquery", force = TRUE)
 
 ```r
 library(GEOquery)
-```
-
-```
-## Loading required package: Biobase
-```
-
-```
-## Welcome to Bioconductor
-## 
-##     Vignettes contain introductory material; view with
-##     'browseVignettes()'. To cite Bioconductor, see
-##     'citation("Biobase")', and for packages 'citation("pkgname")'.
-```
-
-```
-## Setting options('download.file.method.GEOquery'='auto')
-```
-
-```
-## Setting options('GEOquery.inmemory.gpl'=FALSE)
-```
-
-```r
 library(tidyverse)
-```
-
-```
-## ── Attaching packages
-## ───────────────────────────────────────
-## tidyverse 1.3.2 ──
-```
-
-```
-## ✔ ggplot2 3.3.6      ✔ purrr   0.3.5 
-## ✔ tibble  3.1.8      ✔ dplyr   1.0.10
-## ✔ tidyr   1.2.1      ✔ forcats 0.5.2 
-## ✔ readr   2.1.3      
-## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-## ✖ dplyr::collapse()   masks IRanges::collapse()
-## ✖ dplyr::combine()    masks Biobase::combine(), BiocGenerics::combine()
-## ✖ dplyr::desc()       masks IRanges::desc()
-## ✖ tidyr::expand()     masks S4Vectors::expand()
-## ✖ tidyr::extract()    masks magrittr::extract()
-## ✖ dplyr::filter()     masks stats::filter()
-## ✖ dplyr::first()      masks S4Vectors::first()
-## ✖ dplyr::lag()        masks stats::lag()
-## ✖ ggplot2::Position() masks BiocGenerics::Position(), base::Position()
-## ✖ purrr::reduce()     masks IRanges::reduce()
-## ✖ dplyr::rename()     masks S4Vectors::rename()
-## ✖ purrr::set_names()  masks magrittr::set_names()
-## ✖ dplyr::slice()      masks IRanges::slice()
-```
-
-```r
 library(pryr)
 ```
 
-```
-## 
-## Attaching package: 'pryr'
-## 
-## The following objects are masked from 'package:purrr':
-## 
-##     compose, partial
-```
-
+---
 ## Data from GEO is access by a GEO Accession ID
 
 ### Datasets: GDS[0-9] : 
@@ -188,8 +126,8 @@ dir.create("GeoData")
 ---
 ## Downloading a GDS object
 
-We will access the data submitted in the following [article](https://pubmed.ncbi.nlm.nih.gov/24531327/), \
-&lt;font size="3"&gt;  _"Recurrent somatic mutations of PTPN1 in primary mediastinal B cell lymphoma and Hodgkin lymphoma". Nat Genet 2014 Apr;46(4):329-35_  &lt;/font&gt; \
+We will access the data submitted in the following [article](https://pubmed.ncbi.nlm.nih.gov/24531327/),  
+&lt;font size="3"&gt;  _"Recurrent somatic mutations of PTPN1 in primary mediastinal B cell lymphoma and Hodgkin lymphoma". Nat Genet 2014 Apr;46(4):329-35_  &lt;/font&gt;
 
 
 
@@ -84096,7 +84034,7 @@ Biobase::pData(gse_GPL570) %&gt;%
 ---
 ## GSE - Series 
 
-In this case, the GEO series does not have pre-processed expression data. Instead, raw data can be accessed from the supplemental file links
+In this case, the GEO series does not have pre-processed expression data. Instead, raw data can be accessed from the supplemental file links. Here we get two files. The full path to the download is saved as a rowname.
 
 
 ```r
@@ -84107,6 +84045,22 @@ rownames(supp_info)
 ```
 ## [1] "/__w/RU_ReproducibleR_abridged/RU_ReproducibleR_abridged/extdata/GSE147507/GSE147507_RawReadCounts_Ferret.tsv.gz"
 ## [2] "/__w/RU_ReproducibleR_abridged/RU_ReproducibleR_abridged/extdata/GSE147507/GSE147507_RawReadCounts_Human.tsv.gz"
+```
+
+```r
+basename(rownames(supp_info)[1])
+```
+
+```
+## [1] "GSE147507_RawReadCounts_Ferret.tsv.gz"
+```
+
+```r
+basename(rownames(supp_info)[2])
+```
+
+```
+## [1] "GSE147507_RawReadCounts_Human.tsv.gz"
 ```
 
 ---
@@ -84121,29 +84075,25 @@ class: inverse, center, middle
 ## CEDAR Workbench
 
 
-&lt;font size="4"&gt; It is an online resource that makes it easy to collect and use metadata \
+It is an online resource that makes it easy to collect and use metadata
 
-&lt;font size="4"&gt;**It helps user to**&lt;/font&gt; \
-&lt;font size="4"&gt;create user-friendly, shareable forms for collecting metadata, with features like &lt;/font&gt; \
+**It helps user to**
 
-  * &lt;font size="4"&gt;share your forms and metadata &lt;/font&gt; \
-
-  * &lt;font size="4"&gt;link your questions (fields) and possible answers (values) to controlled terms &lt;/font&gt; \
-
-  * &lt;font size="4"&gt; view metadata responses meeting your search critieria, in several forms &lt;/font&gt; \
-
-  * &lt;font size="4"&gt;use the Workbench Desktop interface to manage your content &lt;/font&gt;\
-
-  * &lt;font size="4"&gt;enable intelligent metadata suggestions in your template by using a field’s Suggestions tab &lt;/font&gt; \
+  *create user-friendly, shareable forms for collecting metadata, with features like
+  * share your forms and metadata
+  * link your questions (fields) and possible answers (values) to controlled terms 
+  *  view metadata responses meeting your search criteria, in several forms
+  * use the Workbench Desktop interface to manage your content
+  * enable intelligent metadata suggestions in your template by using a field’s Suggestions tab
 
 ---  
 ## Create a CEDAR account
 
-**Webpage**: [**cedar.metadatacenter.org**](https://cedar.metadatacenter.org) \
+**Webpage**: [**cedar.metadatacenter.org**](https://cedar.metadatacenter.org)
 
 Click on the “Register” link to
 
- * Create an account \
+ * Create an account
 
  
 ![](imgs/cedar_signIn.png)&lt;!-- --&gt;
@@ -84153,32 +84103,21 @@ Click on the “Register” link to
 
 Once registered, 
 
- * Click on the Shared with Me link on the left side to find sample template \
- * Try creating your own \
+ * Click on the Shared with Me link on the left side to find sample template
+ * Try creating your own
 
 ![](imgs/cedar_webpage.png)&lt;!-- --&gt;
 
 ---  
 ## CEDAR and R
 
-For installation:\
+For installation:
 
 ```r
 devtools::install_github("earnaud/cedarr", dependencies = TRUE)
 ```
-
-```
-## 
-## * checking for file ‘/tmp/RtmpG9ySju/remotes16e623df649c/earnaud-cedarr-e8c362c/DESCRIPTION’ ... OK
-## * preparing ‘cedarr’:
-## * checking DESCRIPTION meta-information ... OK
-## * checking for LF line-endings in source and make files and shell scripts
-## * checking for empty or unneeded directories
-## Omitted ‘LazyData’ from DESCRIPTION
-## * building ‘cedarr_0.0.0.9000.tar.gz’
-```
   
-For help: \
+For help:
 
 ```r
 help("API response", package = "cedarr")
