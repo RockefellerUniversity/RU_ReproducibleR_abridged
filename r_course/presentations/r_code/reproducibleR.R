@@ -18,6 +18,28 @@ if(params$isSlides != "yes"){
 
 
 
+## ---- results='asis',include=TRUE,echo=FALSE----------------------------------
+if(params$isSlides == "yes"){
+  cat("class: inverse, center, middle
+
+# Set Up
+
+<html><div style='float:left'></div><hr color='#EB811B' size=1px width=720px></html> 
+
+---
+"    
+  )
+}else{
+  cat("# Set Up
+
+---
+"    
+  )
+  
+}
+
+
+
 ## ----setwd_introtoR,eval=F----------------------------------------------------
 ## setwd("/PathToMyDownload/Reproducible_R-master/r_course")
 ## # e.g. setwd("~/Downloads/Reproducible_R-master/r_course")
@@ -27,7 +49,7 @@ if(params$isSlides != "yes"){
 if(params$isSlides == "yes"){
   cat("class: inverse, center, middle
 
-# Creating Documents from R Scripts
+# Reproducible Research
 
 <html><div style='float:left'></div><hr color='#EB811B' size=1px width=720px></html> 
 
@@ -35,43 +57,7 @@ if(params$isSlides == "yes"){
 "    
   )
 }else{
-  cat("# Creating Documents from R Scripts
-
----
-"    
-  )
-  
-}
-
-
-
-## ----eval=F,echo=TRUE---------------------------------------------------------
-## library(rmarkdown)
-## render("scripts/script.r")
-
-
-## ----eval=F,echo=TRUE---------------------------------------------------------
-## render("scripts/script.r", output_format="html_document")
-
-
-## ----eval=F,echo=TRUE,tidy=FALSE----------------------------------------------
-## render("scripts/script.r", output_format="html_document",
-##        output_file="myRenderedDoc.html",output_dir="scripts")
-
-
-## ---- results='asis',include=TRUE,echo=FALSE----------------------------------
-if(params$isSlides == "yes"){
-  cat("class: inverse, center, middle
-
-# Comments
-
-<html><div style='float:left'></div><hr color='#EB811B' size=1px width=720px></html> 
-
----
-"    
-  )
-}else{
-  cat("# Comments
+  cat("# Reproducible Research
 
 ---
 "    
@@ -82,41 +68,19 @@ if(params$isSlides == "yes"){
 
 
 ## ----eval=F-------------------------------------------------------------------
-## # Generate some random numbers
+## # Generate some random numbers and plot them
 ## myRandNumbers <- rnorm(100,10,2)
-
-
-## ----eval=F-------------------------------------------------------------------
-## #' this would be placed as code
-## # Generate some random numbers
-## myRandNumbers <- rnorm(100,10,2)
-
-
-## ----eval=F-------------------------------------------------------------------
 ## 
-## #' ---
-## #' title: "BRC making notes example"
-## #' author: "Tom Carroll"
-## #' date: "Reproducible R"
-## #' ---
-## #' this would be placed as text in html
-## # Generate some random numbers (This is a comment with code)
-## myRandNumbers <- rnorm(100,10,2)
-
-
-## ----eval=F-------------------------------------------------------------------
+## plot(myRandNumbers)
 ## 
-## #' Some comments for text.
-## #+ fig.width=3, fig.height=3
-## myRandNumbers <- rnorm(100, 10, 2)
-## hist(myRandNumbers)
+## sessionInfo()
 
 
 ## ---- results='asis',include=TRUE,echo=FALSE----------------------------------
 if(params$isSlides == "yes"){
   cat("class: inverse, center, middle
 
-# Markdown
+# R Markdown
 
 <html><div style='float:left'></div><hr color='#EB811B' size=1px width=720px></html> 
 
@@ -124,7 +88,7 @@ if(params$isSlides == "yes"){
 "    
   )
 }else{
-  cat("# Markdown
+  cat("# R Markdown
 
 ---
 "    
@@ -138,7 +102,7 @@ if(params$isSlides == "yes"){
 if(params$isSlides == "yes"){
   cat("class: inverse, center, middle
 
-# Markdown Syntax
+# R Markdown Header
 
 <html><div style='float:left'></div><hr color='#EB811B' size=1px width=720px></html> 
 
@@ -146,7 +110,7 @@ if(params$isSlides == "yes"){
 "    
   )
 }else{
-  cat("# Markdown Syntax
+  cat("# R Markdown Header
 
 ---
 "    
@@ -154,18 +118,13 @@ if(params$isSlides == "yes"){
   
 }
 
-
-
-## ----results='asis',eval=F----------------------------------------------------
-## Italics = _Italics_ or *Italics*
-## Bold  =  __Bold__ or **Bold**
 
 
 ## ---- results='asis',include=TRUE,echo=FALSE----------------------------------
 if(params$isSlides == "yes"){
   cat("class: inverse, center, middle
 
-# rMarkdown
+# R Markdown Body
 
 <html><div style='float:left'></div><hr color='#EB811B' size=1px width=720px></html> 
 
@@ -173,7 +132,7 @@ if(params$isSlides == "yes"){
 "    
   )
 }else{
-  cat("# rMarkdown
+  cat("# R Markdown Body
 
 ---
 "    
@@ -183,39 +142,68 @@ if(params$isSlides == "yes"){
 
 
 
-## ----fig.width=5,fig.height=2-------------------------------------------------
-hist(rnorm(1000))
+## ---- results='asis',include=TRUE,echo=FALSE----------------------------------
+if(params$isSlides == "yes"){
+  cat("class: inverse, center, middle
+
+# R Markdown Code Chunks
+
+<html><div style='float:left'></div><hr color='#EB811B' size=1px width=720px></html> 
+
+---
+"    
+  )
+}else{
+  cat("# R Markdown Code Chunks
+
+---
+"    
+  )
+  
+}
 
 
-## ----eval=F-------------------------------------------------------------------
-## hist(rnorm(1000))
 
+## ```{r}
 
-## ----fig.width=5,fig.height=2,echo=FALSE--------------------------------------
-hist(rnorm(1000))
+## hist(rnorm(100))
 
-
-## ----tidy=T,fig.width=5,fig.height=2------------------------------------------
-        hist( 
-rnorm(100  )
-)
-
-
-## ---- collapse=T--------------------------------------------------------------
-temp <- rnorm(10)
-temp
-
-
-## ---- eval=F------------------------------------------------------------------
-## temp <- rnorm(3)
-## temp2 <- rnorm(3)
-## dfExample <- data.frame(temp,temp2)
-## kable(dfExample,format="markdown")
+## ```
 
 
 ## -----------------------------------------------------------------------------
+hist(rnorm(100))
+
+
+## ----warning=F,message=F------------------------------------------------------
+library(ggplot2)
+
+
+## ---- results='asis',include=TRUE,echo=FALSE----------------------------------
+if(params$isSlides == "yes"){
+  cat("class: inverse, center, middle
+
+# Other R Markdown tricks
+
+<html><div style='float:left'></div><hr color='#EB811B' size=1px width=720px></html> 
+
+---
+"    
+  )
+}else{
+  cat("# Other R Markdown tricks
+
+---
+"    
+  )
+  
+}
+
+
+
+## ---- eval=T------------------------------------------------------------------
 temp <- rnorm(3)
 temp2 <- rnorm(3)
 dfExample <- data.frame(temp,temp2)
-kable(dfExample,format="markdown")
+kable(dfExample)
 

@@ -4,7 +4,7 @@
     <title>github.knit</title>
     <meta charset="utf-8" />
     <meta name="author" content="Rockefeller University, Bioinformatics Resource Centre" />
-    <script src="libs/header-attrs-2.9/header-attrs.js"></script>
+    <script src="libs/header-attrs-2.17/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link rel="stylesheet" href="metropolisCustom.css" type="text/css" />
     <link rel="stylesheet" href="metropolis-fontsCustom.css" type="text/css" />
@@ -13,6 +13,7 @@
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
+.title[
 # Getting started with Git and GitHub
 <html>
 <div style="float:left">
@@ -20,8 +21,13 @@ class: center, middle, inverse, title-slide
 </div>
 <hr color='#EB811B' size=1px width=796px>
 </html>
+]
+.author[
 ### Rockefeller University, Bioinformatics Resource Centre
-### <a href="https://rockefelleruniversity.github.io/RU_reproducibleR/" class="uri">https://rockefelleruniversity.github.io/RU_reproducibleR/</a>
+]
+.date[
+### <a href="https://rockefelleruniversity.github.io/RU_reproducibleR_Abridged/" class="uri">https://rockefelleruniversity.github.io/RU_reproducibleR_Abridged/</a>
+]
 
 ---
 
@@ -32,6 +38,25 @@ class: center, middle, inverse, title-slide
 
 
 
+
+
+## Overview
+
+- [Set up](https://rockefelleruniversity.github.io/RU_introtoR_abridged/presentations/singlepage/introToR_Session1.html#set-up)
+- [Background to R](https://rockefelleruniversity.github.io/RU_introtoR_abridged/presentations/singlepage/introToR_Session1.html#background-to-r)
+- [Data types in R](https://rockefelleruniversity.github.io/RU_introtoR_abridged/presentations/singlepage/introToR_Session1.html#data_types_in_r)
+
+
+---
+class: inverse, center, middle
+
+# Set Up
+
+&lt;html&gt;&lt;div style='float:left'&gt;&lt;/div&gt;&lt;hr color='#EB811B' size=1px width=720px&gt;&lt;/html&gt; 
+
+---
+
+## Set Up
 
 All prerequisites, links to material and slides for this course can be found on github.
 
@@ -165,7 +190,7 @@ We initialize repositories to store files related to a project. You can make man
 
 
 ```
-## Initialized empty Git repository in /__w/RU_reproducibleR/RU_reproducibleR/extdata/.git/
+## Initialized empty Git repository in /__w/RU_ReproducibleR_abridged/RU_ReproducibleR_abridged/extdata/.git/
 ```
 
 
@@ -386,7 +411,7 @@ git status .
 ```
 
 ```
-## [master (root-commit) f0fb4f7] Made a README
+## [master (root-commit) e7f317c] Made a README
 ##  1 file changed, 0 insertions(+), 0 deletions(-)
 ##  create mode 100644 README.md
 ## On branch master
@@ -488,7 +513,7 @@ git commit -m 'Added welcome message'
 ## +++ b/README.md
 ## @@ -0,0 +1 @@
 ## +Hello Friends
-## [master ae89983] Added welcome message
+## [master 5223713] Added welcome message
 ##  1 file changed, 1 insertion(+)
 ```
 
@@ -505,15 +530,15 @@ git log
 ```
 
 ```
-## commit ae899835f8cb9a4bf5e7dceb4f979195ef6402d1
+## commit 5223713e4af1d6f511a1a1e05559af9de0acfd1c
 ## Author: BRC-RU &lt;brc@rockefeller.edu&gt;
-## Date:   Fri Jun 25 20:46:02 2021 +0000
+## Date:   Wed Oct 19 02:09:05 2022 +0000
 ## 
 ##     Added welcome message
 ## 
-## commit f0fb4f712f6bc620145c0cbad5f85ced368572a5
+## commit e7f317c603c30eaf7fd24ecc1893204c367bc98b
 ## Author: BRC-RU &lt;brc@rockefeller.edu&gt;
-## Date:   Fri Jun 25 20:46:02 2021 +0000
+## Date:   Wed Oct 19 02:09:05 2022 +0000
 ## 
 ##     Made a README
 ```
@@ -532,8 +557,8 @@ git log --oneline
 ```
 
 ```
-## ae89983 Added welcome message
-## f0fb4f7 Made a README
+## 5223713 Added welcome message
+## e7f317c Made a README
 ```
 
 ```sh
@@ -541,10 +566,10 @@ git log --oneline --stat
 ```
 
 ```
-## ae89983 Added welcome message
+## 5223713 Added welcome message
 ##  README.md | 1 +
 ##  1 file changed, 1 insertion(+)
-## f0fb4f7 Made a README
+## e7f317c Made a README
 ##  README.md | 0
 ##  1 file changed, 0 insertions(+), 0 deletions(-)
 ```
@@ -681,41 +706,6 @@ These two tools, of many, that make it easier to manage Git repositories on your
 
 They work by accessing the same git repository as used by the command line Git tools. This means it has the same principles. It just adds a point-and-click interface, which is easier to work with for your day-to-day Git wants and needs.
 
----
-## GitHub Desktop
-
-It is easy to add remote repositories from GitHub or local repositories from your computer. 
-
-![alt text](imgs/7_addrepo.png)
-
-
-
----
-## GitHub Desktop
-We can check the log of the repository with the *history* tab.
-![alt text](imgs/8_history.png)
-
----
-## GitHub Desktop
-Staging and committing is simplified:
-
-1. Simply click the checkbox of all files you want to stage
-2. Then add your commit message and press commit.
-![alt text](imgs/10commits.png)
-
----
-## GitHub Desktop
-If there is an associated remote on GitHub you can then just push it up.
-![alt text](imgs/11 push.png)
-
----
-## GitHub Desktop
-
-* For help setting up:
-https://docs.github.com/en/desktop
-
-* For help using the software:
-https://www.softwaretestinghelp.com/github-desktop-tutorial/
 
 ---
 ## RStudio
@@ -892,26 +882,6 @@ git branch
 ![alt text](imgs/25.png)
   ]
 
-
----
-## Other Checkouts 
-
-Though you will mostly use checkout to move between branches, you can also use it to move backwards and forwards along branches to specific commits or files.
-
-* Commits - Each commit has an ID. You can see this in the log. You can use checkout to go back to this point in the project. 
-
-
-```sh
-git checkout commitID
-```
-
-* Files - When you have made local changes to a file, they have not been staged, and you want to actually roll them back to the most recent commit you can checkout that file. 
-
-
-```sh
-git checkout -- filename
-```
-
 ---
 ## Pull requests
 Git has the merge function to allow branches to be merged together. Pull requests are the GitHub equivalent, but have built in steps for review. This can be for you, or for others you are collaborating with. Pull requests are the cornerstone of a collaborative GitHub Environment.
@@ -1043,6 +1013,8 @@ git add -A .
 
 * **reset** - Rewind back staging and commits
 
+* **checkout** - Though we covered checking out a branch, this can also be used to travel back to a specific commit in history or roll back unstaged changes to a specific file. 
+
 Follow up with the [Git book](https://git-scm.com/book/en/v2) for more detail on implementing these commands.
 
 ---
@@ -1078,6 +1050,44 @@ Exercise on Git and GitHub in R can be found [here](../../exercises/exercises/Gi
 ## Contact
 
 Any suggestions, comments, edits or questions (about content or the slides themselves) please reach out to our [GitHub](https://github.com/RockefellerUniversity/Reproducible_R/issues) and raise an issue.
+
+
+---
+## GitHub Desktop
+
+It is easy to add remote repositories from GitHub or local repositories from your computer. 
+
+![alt text](imgs/7_addrepo.png)
+
+
+
+---
+## GitHub Desktop
+We can check the log of the repository with the *history* tab.
+![alt text](imgs/8_history.png)
+
+---
+## GitHub Desktop
+Staging and committing is simplified:
+
+1. Simply click the checkbox of all files you want to stage
+2. Then add your commit message and press commit.
+![alt text](imgs/10commits.png)
+
+---
+## GitHub Desktop
+If there is an associated remote on GitHub you can then just push it up.
+![alt text](imgs/11 push.png)
+
+---
+## GitHub Desktop
+
+* For help setting up:
+https://docs.github.com/en/desktop
+
+* For help using the software:
+https://www.softwaretestinghelp.com/github-desktop-tutorial/
+
 
 
 
@@ -1136,6 +1146,19 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     deleted = true;
   });
 })();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
 (function() {
   "use strict"
   // Replace <script> tags in slides area to make them executable

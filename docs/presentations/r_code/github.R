@@ -9,16 +9,39 @@ knitr::opts_chunk$set(echo = TRUE, tidy = T)
 
 
 
-## ---- echo=F, message=F-------------------------------------------------------
-windows <- if(.Platform$OS.type!="unix"){windows<-(TRUE)}else{windows<-(FALSE)}
-message(windows)
-unix <- if(.Platform$OS.type=="unix"){unix<-(TRUE)}else{unix<-(FALSE)}
-message(unix)
+## ---- echo=F, message=F, eval=F-----------------------------------------------
+## windows <- if(.Platform$OS.type!="unix"){windows<-(TRUE)}else{windows<-(FALSE)}
+## message(windows)
+## unix <- if(.Platform$OS.type=="unix"){unix<-(TRUE)}else{unix<-(FALSE)}
+## message(unix)
+## 
 
 
 ## ---- results='asis',include=TRUE,echo=FALSE----------------------------------
 if(params$isSlides != "yes"){
   cat("# Getting started with Git and GitHub
+
+---
+"    
+  )
+  
+}
+
+
+
+## ---- results='asis',include=TRUE,echo=FALSE----------------------------------
+if(params$isSlides == "yes"){
+  cat("class: inverse, center, middle
+
+# Set Up
+
+<html><div style='float:left'></div><hr color='#EB811B' size=1px width=720px></html> 
+
+---
+"    
+  )
+}else{
+  cat("# Set Up
 
 ---
 "    
@@ -80,40 +103,40 @@ if(params$isSlides == "yes"){
 ## git --version
 
 
-## ---- echo=F, message=F, warning=F, include=F---------------------------------
-require(gh)
-
-# get both pats
-master_PAT <- Sys.getenv("GITHUB_PAT")
-alt_PAT <- Sys.getenv("GH_alt")
-Sys.setenv(GITHUB_PAT=alt_PAT)
-Sys.setenv(GITHUB_TOKEN=alt_PAT)
-
-OS_check <- Sys.getenv("OS_check")
-message(OS_check)
-
-if(OS_check){
-  
-buildname<-paste0(.Platform$OS.type,".",R.Version()$major,".",R.Version()$minor)
-repo_name<-paste0("My_GitHub_Project.",buildname)
-my_repos <- vapply(gh("/user/repos",per_page=110), "[[", "", "name")
-if(sum(my_repos==(repo_name))>0){
-  gh("DELETE /repos/:owner/:repo", owner = "BRC-RU", 
-   repo = repo_name) }
-
-gh("POST /user/repos", name = repo_name)
-
-}else{
-  
-my_repos <- vapply(gh("/user/repos",per_page=110), "[[", "", "name")
-
-if(sum(my_repos==("My_GitHub_Project"))>0){
-  gh("DELETE /repos/:owner/:repo", owner = "BRC-RU", 
-   repo = "My_GitHub_Project") }
-
-gh("POST /user/repos", name = "My_GitHub_Project")
-
-}
+## ---- echo=F, message=F, warning=F, include=F,eval=F--------------------------
+## require(gh)
+## 
+## # get both pats
+## master_PAT <- Sys.getenv("GITHUB_PAT")
+## alt_PAT <- Sys.getenv("GH_alt")
+## Sys.setenv(GITHUB_PAT=alt_PAT)
+## Sys.setenv(GITHUB_TOKEN=alt_PAT)
+## 
+## OS_check <- Sys.getenv("OS_check")
+## message(OS_check)
+## 
+## if(OS_check){
+## 
+## buildname<-paste0(.Platform$OS.type,".",R.Version()$major,".",R.Version()$minor)
+## repo_name<-paste0("My_GitHub_Project.",buildname)
+## my_repos <- vapply(gh("/user/repos",per_page=110,.token=alt_PAT), "[[", "", "name")
+## if(sum(my_repos==(repo_name))>0){
+##   gh("DELETE /repos/:owner/:repo",.token=alt_PAT, owner = "BRC-RU",
+##    repo = repo_name) }
+## 
+## gh("POST /user/repos",.token=alt_PAT, name = repo_name)
+## 
+## }else{
+## 
+## my_repos <- vapply(gh("/user/repos",per_page=110, .token=alt_PAT), "[[", "", "name")
+## 
+## if(sum(my_repos==("My_GitHub_Project"))>0){
+##   gh("DELETE /repos/:owner/:repo", owner = "BRC-RU",
+##    repo = "My_GitHub_Project", .token=alt_PAT) }
+## 
+## gh("POST /user/repos", name = "My_GitHub_Project", .token=alt_PAT)
+## 
+## }
 
 
 ## rm -rf .git
@@ -130,7 +153,9 @@ gh("POST /user/repos", name = "My_GitHub_Project")
 ## git init
 
 
+## ls .
 
+## ls -a .
 
 
 ## dir .
@@ -138,6 +163,7 @@ gh("POST /user/repos", name = "My_GitHub_Project")
 ## dir . /ah
 
 
+## ls -a .git
 
 
 ## dir /ah .git
@@ -195,9 +221,11 @@ gh("POST /user/repos", name = "My_GitHub_Project")
 
 
 ## 
+
 ## git log
 
 ## 
+
 
 ## git log --oneline
 
@@ -229,35 +257,35 @@ if(params$isSlides == "yes"){
 ## git remote add origin https://github.com/BRC-RU/My_GitHub_Project.git
 
 
-## ---- echo=F------------------------------------------------------------------
-
-if(OS_check){
-system(paste0("git remote add origin https://github.com/BRC-RU/", repo_name, ".git"))
-}else{
-  
-system("git remote add origin https://github.com/BRC-RU/My_GitHub_Project.git")
-}
-
+## ---- echo=F,eval=F-----------------------------------------------------------
+## 
+## if(OS_check){
+## system(paste0("git remote add origin https://github.com/BRC-RU/", repo_name, ".git"))
+## }else{
+## 
+## system("git remote add origin https://github.com/BRC-RU/My_GitHub_Project.git")
+## }
+## 
 
 
 ## git push -u origin master
 
 
-## ---- echo=F------------------------------------------------------------------
-if(OS_check){
-system(paste0("git push https://${GH_alt}@github.com/BRC-RU/", repo_name, ".git"))
-}else{system("git push https://${GH_alt}@github.com/BRC-RU/My_GitHub_Project.git")}
+## ---- echo=F ,eval=F----------------------------------------------------------
+## if(OS_check){
+## system(paste0("git push https://${GH_alt}@github.com/BRC-RU/", repo_name, ".git"))
+## }else{system("git push https://${GH_alt}@github.com/BRC-RU/My_GitHub_Project.git")}
 
 
 ## git pull -u origin master
 
 
-## ---- echo=F------------------------------------------------------------------
-if(OS_check){
-system(paste0("git pull https://${GH_alt}@github.com/BRC-RU/", repo_name, ".git"))
-}else{
-system(paste0("git pull https://${GH_alt}@github.com/BRC-RU/My_GitHub_Project.git"))
-}
+## ---- echo=F,eval=F-----------------------------------------------------------
+## if(OS_check){
+## system(paste0("git pull https://${GH_alt}@github.com/BRC-RU/", repo_name, ".git"))
+## }else{
+## system(paste0("git pull https://${GH_alt}@github.com/BRC-RU/My_GitHub_Project.git"))
+## }
 
 
 ## ---- results='asis',include=TRUE,echo=FALSE----------------------------------
@@ -316,12 +344,6 @@ if(params$isSlides == "yes"){
 ## git branch
 
 
-## git checkout commitID
-
-
-## git checkout -- filename
-
-
 ## ---- results='asis', echo=F--------------------------------------------------
 
 cat("<<<<<<< HEAD\n
@@ -360,23 +382,26 @@ if(params$isSlides == "yes"){
 ## git add -A .
 
 
-## ---- echo=F, message=F, warning=F, include=F---------------------------------
-
-
-if(OS_check){
-my_repos <- vapply(gh("/user/repos",per_page=110), "[[", "", "name")
-buildname<-paste0(.Platform$OS.type,".",R.Version()$major,".",R.Version()$minor)
-repo_name<-paste0("My_GitHub_Project.",buildname)
-if(sum(my_repos==(repo_name))>0){
-  gh("DELETE /repos/:owner/:repo", owner = "BRC-RU", 
-   repo = repo_name) }
-}
-
+## ---- echo=F, message=F, warning=F, include=F, eval=F-------------------------
+## 
+## 
+## if(OS_check){
+## my_repos <- vapply(gh("/user/repos",per_page=110), "[[", "", "name")
+## buildname<-paste0(.Platform$OS.type,".",R.Version()$major,".",R.Version()$minor)
+## repo_name<-paste0("My_GitHub_Project.",buildname)
+## if(sum(my_repos==(repo_name))>0){
+##   gh("DELETE /repos/:owner/:repo", owner = "BRC-RU",
+##    repo = repo_name) }
+## }
+## 
 
 
 ## 
+
 ## 
+
 ## 
+
 ## git config --global user.name ${A}
 
 ## git config --global user.email ${B}
@@ -385,7 +410,8 @@ if(sum(my_repos==(repo_name))>0){
 
 ## 
 
-## ---- echo=F, message=F, warning=F, include=F---------------------------------
-Sys.setenv(GITHUB_PAT=master_PAT)
-Sys.setenv(GITHUB_TOKEN=master_PAT)
+
+## ---- echo=F, message=F, warning=F, include=F, eval=F-------------------------
+## Sys.setenv(GITHUB_PAT=master_PAT)
+## Sys.setenv(GITHUB_TOKEN=master_PAT)
 
