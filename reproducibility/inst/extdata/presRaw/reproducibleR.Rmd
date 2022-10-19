@@ -132,7 +132,6 @@ if(params$isSlides == "yes"){
 
 ```
 
----
 ## Reproducible Research
 
 >"Let us change our traditional attitude to the construction of programs: Instead of imagining that our main task is to instruct a computer what to do, let us concentrate rather on explaining to humans what we want the computer to do."
@@ -508,7 +507,6 @@ if(params$isSlides == "yes"){
 
 ```
 
----
 ## Inserting tables
 
 The results of printing data frames or matrices in the console aren't neat.

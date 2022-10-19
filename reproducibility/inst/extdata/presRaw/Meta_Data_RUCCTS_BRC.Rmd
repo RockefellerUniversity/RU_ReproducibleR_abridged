@@ -42,7 +42,6 @@ if(params$isSlides != "yes"){
 ```
 
 
----
 ```{r, results='asis',include=TRUE,echo=FALSE}
 if(params$isSlides == "yes"){
   cat("class: inverse, center, middle
@@ -81,13 +80,14 @@ if (!require("BiocManager", quietly = TRUE))
     
 ```
 
-```{r}
+```{r, warnings=F, message=F}
 library(GEOquery)
 library(tidyverse)
 library(pryr)
 
 ```
 
+---
 ## Data from GEO is access by a GEO Accession ID
 
 ### Datasets: GDS[0-9] : 
@@ -140,8 +140,8 @@ dir.create("GeoData")
 ---
 ## Downloading a GDS object
 
-We will access the data submitted in the following [article](https://pubmed.ncbi.nlm.nih.gov/24531327/), \
-<font size="3">  _"Recurrent somatic mutations of PTPN1 in primary mediastinal B cell lymphoma and Hodgkin lymphoma". Nat Genet 2014 Apr;46(4):329-35_  </font> \
+We will access the data submitted in the following [article](https://pubmed.ncbi.nlm.nih.gov/24531327/),  
+<font size="3">  _"Recurrent somatic mutations of PTPN1 in primary mediastinal B cell lymphoma and Hodgkin lymphoma". Nat Genet 2014 Apr;46(4):329-35_  </font>
 
 
 ```{r eval=F}
@@ -290,9 +290,9 @@ Table(gpl) %>% as_tibble() %>%
 
 
 ```{r, eval=F}
-gse <- getGEO(GEO = "GSE54157", destdir = "GeoData",
+gse <- getGEO(GEO = "GSE54157", destdir = "GeoData",  
               GSEMatrix = FALSE) # Note the GSEMatrix argument
-gse_exprs <- getGEO(GEO = "GSE54157", destdir = "GeoData",
+gse_exprs <- getGEO(GEO = "GSE54157", destdir = "GeoData",  
               GSEMatrix = TRUE) # Note the GSEMatrix argument
 ```
 
@@ -331,7 +331,7 @@ GEOquery::GPLList(gse) %>% names()
 
 
 ```{r, eval=F}
-gse_exprs <- getGEO(GEO = "GSE54157", destdir = "geoData",
+gse_exprs <- getGEO(GEO = "GSE54157", destdir = "geoData",  
                     GSEMatrix = TRUE) # Note the GSEMatrix argument
 ```
 
@@ -359,11 +359,13 @@ Biobase::pData(gse_GPL570) %>% as_tibble()
 ---
 ## GSE - Series 
 
-In this case, the GEO series does not have pre-processed expression data. Instead, raw data can be accessed from the supplemental file links
+In this case, the GEO series does not have pre-processed expression data. Instead, raw data can be accessed from the supplemental file links. Here we get two files. The full path to the download is saved as a rowname.
 
 ```{r}
 supp_info <- GEOquery::getGEOSuppFiles(GEO = "GSE147507")
 rownames(supp_info)
+basename(rownames(supp_info)[1])
+basename(rownames(supp_info)[2])
 
 ```
 
@@ -393,29 +395,25 @@ if(params$isSlides == "yes"){
 ## CEDAR Workbench
 
 
-<font size="4"> It is an online resource that makes it easy to collect and use metadata \
+It is an online resource that makes it easy to collect and use metadata
 
-<font size="4">**It helps user to**</font> \
-<font size="4">create user-friendly, shareable forms for collecting metadata, with features like </font> \
+**It helps user to**
 
-  * <font size="4">share your forms and metadata </font> \
-
-  * <font size="4">link your questions (fields) and possible answers (values) to controlled terms </font> \
-
-  * <font size="4"> view metadata responses meeting your search critieria, in several forms </font> \
-
-  * <font size="4">use the Workbench Desktop interface to manage your content </font>\
-
-  * <font size="4">enable intelligent metadata suggestions in your template by using a field’s Suggestions tab </font> \
+  *create user-friendly, shareable forms for collecting metadata, with features like
+  * share your forms and metadata
+  * link your questions (fields) and possible answers (values) to controlled terms 
+  *  view metadata responses meeting your search criteria, in several forms
+  * use the Workbench Desktop interface to manage your content
+  * enable intelligent metadata suggestions in your template by using a field’s Suggestions tab
 
 ---  
 ## Create a CEDAR account
 
-**Webpage**: [**cedar.metadatacenter.org**](https://cedar.metadatacenter.org) \
+**Webpage**: [**cedar.metadatacenter.org**](https://cedar.metadatacenter.org)
 
 Click on the “Register” link to
 
- * Create an account \
+ * Create an account
 
  
 ```{r,eval=TRUE, echo=FALSE}
@@ -427,8 +425,8 @@ knitr::include_graphics("imgs/cedar_signIn.png")
 
 Once registered, 
 
- * Click on the Shared with Me link on the left side to find sample template \
- * Try creating your own \
+ * Click on the Shared with Me link on the left side to find sample template
+ * Try creating your own
 
 ```{r,eval=TRUE, echo=FALSE} 
 knitr::include_graphics("imgs/cedar_webpage.png")
@@ -438,12 +436,12 @@ knitr::include_graphics("imgs/cedar_webpage.png")
 ---  
 ## CEDAR and R
 
-For installation:\
+For installation:
 ```{r message=FALSE}
 devtools::install_github("earnaud/cedarr", dependencies = TRUE)
 ```
   
-For help: \
+For help:
 ```{r message=FALSE}
 
 help("API response", package = "cedarr")
